@@ -1,12 +1,9 @@
 // beginning of the code
 
-
-var model = undefined;
+let model = undefined;
 
 cocoSsd.load().then(function(loadedModel) {
     model = loadedModel;
-    // Show demo section now model is ready to use.
-    demosSection.classList.remove('invisible');
 })
 
 const video = document.getElementById('webcam');
@@ -18,7 +15,7 @@ function hasGetUserMedia() {
 }
 
 // array of object created by tensor flow
-var children = [];
+let children = [];
 
 // If webcam supported, add event listener to button for when user
 // wants to activate it.
@@ -54,9 +51,13 @@ function enableCam(event) {
     });
 }
 
+// amount people
+let numEntered = 0;
+let people = [];
+
 function countPeople() {
     // Now let's start classifying the stream.
-    model.detect(video).then(function(predictions) {
+    model.detect(video).then(function(detections) {
         // Remove any highlighting we did previous frame.
         for (let i = 0; i < children.length; i++) {
             // remove that child from existence
@@ -65,32 +66,35 @@ function countPeople() {
         // splice those children up
         children.splice(0);
 
-        // Now lets loop through predictions and draw them to the live view if
+        // Now lets loop through detections and draw them to the live view if
         // they have a high confidence score.
-        for (let n = 0; n < predictions.length; n++) {
+        for (let n = 0; n < detections.length; n++) {
             // If we are over 66% sure we are sure we classified it right, draw it!
-            if (predictions[n].score > 0.66) {
+            if (detections[n].score > 0.66) {
+                console.log(detections[n]);
                 const p = document.createElement('p');
-                p.innerText = predictions[n].class + ' - with ' +
-                    Math.round(parseFloat(predictions[n].score) * 100) +
+                p.innerText = detections[n].class + ' - with ' +
+                    Math.round(parseFloat(detections[n].score) * 100) +
                     '% confidence.';
                 // Draw in top left of bounding box outline.
-                p.style = 'left: ' + predictions[n].bbox[0] + 'px;' +
-                    'top: ' + predictions[n].bbox[1] + 'px;' +
-                    'width: ' + (predictions[n].bbox[2] - 10) + 'px;';
+                p.style = 'left: ' + detections[n].bbox[0] + 'px;' +
+                    'top: ' + detections[n].bbox[1] + 'px;' +
+                    'width: ' + (detections[n].bbox[2] - 10) + 'px;';
 
                 // Draw the actual bounding box.
                 const highlighter = document.createElement('div');
                 highlighter.setAttribute('class', 'highlighter');
-                highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: ' +
-                    predictions[n].bbox[1] + 'px; width: ' +
-                    predictions[n].bbox[2] + 'px; height: ' +
-                    predictions[n].bbox[3] + 'px;';
+                highlighter.style = 'left: ' + detections[n].bbox[0] + 'px; top: ' +
+                    detections[n].bbox[1] + 'px; width: ' +
+                    detections[n].bbox[2] + 'px; height: ' +
+                    detections[n].bbox[3] + 'px;';
 
                 liveView.appendChild(highlighter);
                 liveView.appendChild(p);
 
                 // Store drawn objects in memory so we can delete them next time around.
+                // If these weren't here, the boxes wouldn't refresh and every few frames, the boxes of detection would just keep
+                // stacking on top of each other.
                 children.push(highlighter);
                 children.push(p);
             }
