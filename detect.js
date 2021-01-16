@@ -68,10 +68,11 @@ function countPeople() {
 
         // Now lets loop through detections and draw them to the live view if
         // they have a high confidence score.
+        console.log(detections.length);
         for (let n = 0; n < detections.length; n++) {
             // If we are over 66% sure we are sure we classified it right, draw it!
-            if (detections[n].score > 0.66) {
-                console.log(detections[n]);
+            if (detections[n].score > 0.66 && detections[n].class === "person") {
+                console.log("detections[n]: " + detections[n] + "n: " + n);
                 const p = document.createElement('p');
                 p.innerText = detections[n].class + ' - with ' +
                     Math.round(parseFloat(detections[n].score) * 100) +
