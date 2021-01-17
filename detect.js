@@ -18,19 +18,21 @@ form.addEventListener('click', handleForm);
 
 var place = null
 var number = null;
-
+var capacity = null;
 
 // handler function for the form submission
 function handleForm(event) {
     place = document.getElementById("loc").value;
     number = document.getElementById("num").value;
-    console.log(number);
-    console.log(place);
+    capacity = document.getElementById("capacity").value;
+    console.log("Place: " + place);
+    console.log("max capacity: " + capacity);
+    console.log("Phone Number" + number);
     form.hidden = true;
     liveView.hidden = false;
     // create element with info that was entered, and display it
     const info = document.createElement('p');
-    info.innerText = "Location: " + place + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + "Phone: " + number;
+    info.innerText = "Location: " + place + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + "max capacity: " + capacity + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + "Phone: " + number;
     locationdiv.innerText = info.innerText;
     event.preventDefault();
 }
@@ -66,7 +68,10 @@ function enableCam(event) {
 
     // getUsermedia parameters.
     const constraints = {
-        video: true
+        video: {
+            width: { min: 1024, ideal: 1280, max: 1920 },
+            height: { min: 576, ideal: 720, max: 1080 }
+        }
     };
 
     // Activate the webcam stream.

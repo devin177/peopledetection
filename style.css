@@ -47,7 +47,7 @@ header, footer {
 .videoView, .classifyOnClick {
   position: relative;
   float: left;
-  width: 48%;
+  width: 75%;
   margin: 2% 1%;
   cursor: pointer;
 }
