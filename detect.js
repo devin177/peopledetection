@@ -19,6 +19,7 @@ form.addEventListener('click', handleForm);
 var camlocation = null;
 var number = null;
 
+
 // handler function for the form submission
 function handleForm(event) {
     camlocation = document.getElementById("loc").value;
