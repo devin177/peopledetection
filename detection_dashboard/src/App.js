@@ -6,9 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import React, { useState, useEffect } from 'react'
 import { Card, Box} from '@material-ui/core'
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Dropdown from 'react-bootstrap/Dropdown'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './components/Menu.js';
 
@@ -41,20 +39,6 @@ function App() {
 				}
 			})
 	});*/
-
-	/*createSelectItems() {
-		let items = [];         
-		for (let i = 0; i <= this.props.maxValue; i++) {             
-			items.push(<option key={i} value={i}>{i}</option>);   
-			//here I will be creating my options dynamically based on
-			//what props are currently passed to the parent component
-		}
-		return items;
-	}  
-*/
-
-
-
 	// set the numbers
 
 	const classes = useStyles();
