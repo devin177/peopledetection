@@ -7,33 +7,32 @@ cocoSsd.load().then(function(loadedModel) {
 })
 
 // get user location info before loading the stream
-var form = document.getElementById("forminside")
+var form = document.getElementById("inputbutton")
 var locationdiv = document.getElementById("locationbox");
 
 // Setting up references to the video
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
 
-form.addEventListener('submit', handleForm);
+form.addEventListener('click', handleForm);
 
-var location = null;
+var camlocation = null;
 var number = null;
 
 // handler function for the form submission
 function handleForm(event) {
-    location = document.getElementById("loc").value;
+    camlocation = document.getElementById("loc").value;
     number = document.getElementById("num").value;
     console.log(number);
-    console.log(location);
+    console.log(camlocation);
     form.hidden = true;
     liveView.hidden = false;
     // create element with info that was entered, and display it
-    const info = "Location: " + location + "       " + "Phone: " + number;
-    locationdiv.innerText += info;
+    const info = document.createElement('p');
+    info.innerText = "Location: " + camlocation + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + "Phone: " + number;
+    locationdiv.innerText = info.innerText;
     event.preventDefault();
 }
-
-
 
 function hasGetUserMedia() {
     return !!(navigator.mediaDevices &&
