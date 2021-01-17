@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Jason Mayes">
-
     <!-- Import the webpage's stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,13 +15,14 @@
     <h1>People Detection in a Room </h1>
 
     <p>Walk past this camera and see if it detects you</p>
-
-    <form id="locationbox" name="location">
-        <input type="text" placeholder="Type Location Here" name="loc">
-        <button>Save</button>
-    </form>
-
-    <div id="liveView" class="videoView">
+    <div id="locationbox">
+        <form id="forminside">
+            <input type="text" placeholder="Type Location Here" id="loc">
+            <input type="text" placeholder="Type your phone number" id="num">
+            <button>Save</button>
+        </form>
+    </div>
+    <div id="liveView" class="videoView" hidden="true">
         <button id="webcamButton">Enable Webcam</button>
         <video id="webcam" autoplay></video>
     </div>
