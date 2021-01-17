@@ -11,10 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './components/Menu.js';
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    height: 400,
-    width: 250,
-	},
 	// Shit don't work
 	divider: {
 		minHeight: 20
@@ -51,52 +47,6 @@ function App() {
 
 			<Menu></Menu>
 
-			<Grid container justify="center" spacing={5}>
-        <Grid item>
-          <Paper className={classes.paper}>
-						<Card padding={20}>
-							<CardContent>
-								<Typography>
-									Current Shoppers
-								</Typography>
-							</CardContent>
-						</Card>
-						<Typography variant='h1'>
-							{shoppers}
-						</Typography>
-					</Paper>
-        </Grid>
-
-				<Grid item>
-          <Paper className={classes.paper}>
-					<Card>
-							<CardContent>
-								<Typography>
-									Daily Total
-								</Typography>
-							</CardContent>
-						</Card>
-						<Typography variant='h1'>
-							{totalIn}
-						</Typography>
-					</Paper>
-        </Grid>
-
-				{/*<Grid item>
-          <Paper className={classes.paper}>
-					<Card>
-							<CardContent>
-								<Typography>
-									Total Mask
-								</Typography>
-								<Typography>
-									object
-								</Typography>
-							</CardContent>
-						</Card>
-					</Paper>
-        </Grid>*/}
-      </Grid>
 		</div>
   );
 }

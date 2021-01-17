@@ -27,7 +27,7 @@ export default function NavBar() {
           <Toolbar>
             {/*Could put an ICON here. Like an eyeball*/}
             <Typography variant="h2" className={classes.title}>
-              Detecting Shopper Density
+              Crowd Size Dashboard
             </Typography>
           </Toolbar>
         </AppBar>
