@@ -107,6 +107,13 @@ function countPeople() {
             }
             loc.splice(0);
             // call api to update count 
+            const Http = new XMLHttpRequest();
+            const url = `https://95e4xx7ty1.execute-api.us-west-1.amazonaws.com/hackdavis/data?count=${count}&loc=${place}&cap=${capacity}`;
+            Http.open("GET", url);
+            Http.send();
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }   
         }
 
         // Remove any highlighting we did previous frame.
