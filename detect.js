@@ -22,7 +22,7 @@ var number = null;
 
 // handler function for the form submission
 function handleForm(event) {
-    camlocation = document.getElementById("loc").value;
+    place = document.getElementById("loc").value;
     number = document.getElementById("num").value;
     console.log(number);
     console.log(place);
@@ -30,7 +30,7 @@ function handleForm(event) {
     liveView.hidden = false;
     // create element with info that was entered, and display it
     const info = document.createElement('p');
-    info.innerText = "Location: " + camlocation + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + "Phone: " + number;
+    info.innerText = "Location: " + place + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + "Phone: " + number;
     locationdiv.innerText = info.innerText;
     event.preventDefault();
 }
