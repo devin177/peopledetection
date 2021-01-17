@@ -6,6 +6,16 @@ cocoSsd.load().then(function(loadedModel) {
     model = loadedModel;
 })
 
+// get user location info before loading the stream
+var form = document.getElementById("locationbox");
+
+form.addEventListener('submit', handleForm);
+
+function handleForm(event) {
+    console.log(event);
+    event.preventDefault();
+}
+
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
 
