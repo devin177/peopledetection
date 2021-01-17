@@ -16,7 +16,7 @@ const liveView = document.getElementById('liveView');
 
 form.addEventListener('click', handleForm);
 
-var camlocation = null;
+var place = null
 var number = null;
 
 
@@ -25,7 +25,7 @@ function handleForm(event) {
     camlocation = document.getElementById("loc").value;
     number = document.getElementById("num").value;
     console.log(number);
-    console.log(camlocation);
+    console.log(place);
     form.hidden = true;
     liveView.hidden = false;
     // create element with info that was entered, and display it
