@@ -19,16 +19,17 @@ form.addEventListener('submit', handleForm);
 var location = null;
 var number = null;
 
+
 // handler function for the form submission
 function handleForm(event) {
-    location = document.getElementById("loc").value;
+    place = document.getElementById("loc").value;
     number = document.getElementById("num").value;
     console.log(number);
     console.log(location);
     form.hidden = true;
     liveView.hidden = false;
     // create element with info that was entered, and display it
-    const info = "Location: " + location + "       " + "Phone: " + number;
+    const info = "Location: " + place + "       " + "Phone: " + number;
     locationdiv.innerText += info;
     event.preventDefault();
 }
