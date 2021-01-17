@@ -55,9 +55,29 @@ function enableCam(event) {
 let numEntered = 0;
 let people = [];
 
+var pp = false;
+var count = 0;
+var loc = [];
+
 function countPeople() {
     // Now let's start classifying the stream.
     model.detect(video).then(function(detections) {
+        // Some one finished a movement
+        if (pp === true && children.length === 0) {
+            pp = false;
+            if (loc[0] < loc[loc.length - 1]) {
+                // entry
+                count += 1;
+                console.log("left to right: " + count.toString());
+            } else {
+                // exit
+                count -= 1;
+                console.log("right to left: " + count.toString());
+            }
+            loc.splice(0);
+            // call api to update count 
+        }
+
         // Remove any highlighting we did previous frame.
         for (let i = 0; i < children.length; i++) {
             // remove that child from existence
@@ -68,11 +88,13 @@ function countPeople() {
 
         // Now lets loop through detections and draw them to the live view if
         // they have a high confidence score.
-        console.log(detections.length);
         for (let n = 0; n < detections.length; n++) {
             // If we are over 66% sure we are sure we classified it right, draw it!
-            if (detections[n].score > 0.66 && detections[n].class === "person") {
-                console.log("detections[n]: " + detections[n] + "n: " + n);
+            if (detections[n].score > 0.50 && detections[n].class === "person") {
+                pp = true;
+                //console.log(detections[n].bbox[0]);
+                loc.push(detections[n].bbox[0]);
+                //console.log("detections[n]: " + detections[n] + "n: " + n);
                 const p = document.createElement('p');
                 p.innerText = detections[n].class + ' - with ' +
                     Math.round(parseFloat(detections[n].score) * 100) +
