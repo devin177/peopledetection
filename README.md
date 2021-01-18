@@ -2,6 +2,7 @@
 HackDavis Project: People Detection
 </h1>
 
+### We PLAN to host this on aionyou.tech
 
 <h1>Inspiration:</h1>
 
@@ -13,7 +14,7 @@ Our project determines the current amount of people of a given area in order to 
 
 <h1>How we built it:</h1>
 
-We have two front end pages. One is an information dashboard built using React and several libraries like Bootstrap, as well as Material UI. The second front end page is a platform to live identify the people coming in and out of a given location. This was built using a plain html and javascript. The machine learning model used to identify and track peoples' movements was built using tensorflow.js
+We have two front end pages. One is an information dashboard built using React and several libraries like Bootstrap, as well as Material UI. The second front end page is a platform to live identify the people coming in and out of a given location. This was built using a plain html and javascript. The machine learning model used to identify and track peoples' movements was built using tensorflow.js. The online website is hosted on GitHub Pages.
 
 
 
@@ -41,11 +42,7 @@ We were really proud of the fact that we learned about all the different web too
 - We learned a lot about the built in security systems of the internet protocol, especially Same Origin Policy and CORS. Apparently, outside domains are not allowed to request certain resources from the domain from which that resource was first served. This is to prevent individuals from requesting data to use with malicious intenet. With the SOP, we are able to protect API keys, passwords, etc. CORS is a browser mechanism that allows for this cross origin resource sharing. While it offers the ability to request these resources, its trade-off is potential security concerns.
 
 <h1>What's next for testing:</h1>
-
-TALKING POINTS, ELABORATE
-- Ensuring cors error doesnt happen again
-- improve machine learning model to keep the detection constant when there are multiple people
-    - sometimes people walk in front of others, and this is difficult to keep track of
-
-
-
+To further progress our project, we would want to test for more chaotic situations in the outside, and change our detection models based on that. What if there are several people walking at once? What if there are animals? Vehicles? Other things that could potentially mess with our detection?
+We would also like to test to accomodate for more information such as date and time, and perhaps do some number crunching so we can present our consumers with more useful metrics.
+Code wise, we should try to secure our APIs, making sure we follow proper SOP protocol.
+Design wise, it may be a good idea to try and make a more visually appealing UI. It is quite simple to use right now, but if add more functionality later, the web app design/its ease of use will become an important factor.
