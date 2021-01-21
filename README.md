@@ -2,6 +2,7 @@
 HackDavis Project: People Detection
 </h1>
 
+https://devin177.github.io/peopledetection/
 ### We PLAN to host this on aionyou.tech
 
 <h1>Inspiration:</h1>
